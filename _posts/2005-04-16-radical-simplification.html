@@ -1,0 +1,55 @@
+---
+layout: post
+title: Radical Simplification
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta: {}
+---
+<p>David Heinemeier Hansson has posted an interested find over at his blog <a href="http://www.loudthinking.com/">Loud Thinking</a> about <span class="caps">IBM</span>&#8217;s stated new goal to pursue <a href="http://www.loudthinking.com/arc/000439.html">Radical Simplification</a> in their enterprise work. Essentially, Big Blue is starting to acknowledge that most enterprise web development is just too cumbersome and daunting for agile and powerful web development. Things like <span class="caps">SOAP</span> and <span class="caps">WSDL</span> are examples of this. What should be a simple task like <em>retrieve a weather forecast from a remote site</em> becomes a complicated mess of debugging <span class="caps">SOAP</span> calls, tweaking <span class="caps">WSDL</span> specifications and using wizards on the server to generate code that is impossible for the end user to debug, let alone understand.</p>
+
+
+	<p>Or as Sam Ruby puts in his excellent presentation to <span class="caps">IBM</span> on the topic <a href="http://intertwingly.net/slides/2005/rs/">Hello From The Open Source World</a>:</p>
+
+
+	<blockquote>
+		<p>For normal people, the perceived usefulness of a computer language is inversely proportional to the amount of theory the language forces you to learn.</p>
+	</blockquote>
+
+
+	<p>Sam illustrates this in his slides by showing the classic &#8220;Hello World&#8221; example in a variety of programming languages on different slides. But when he reaches <span class="caps">WSDL</span> to specify it, it&#8217;s a blank. Because, quite frankly, <span class="caps">WSDL</span> is so unwieldy to use, it&#8217;s hard to just build it on the fly, forcing many people to plunk down bucks to Microsoft or <span class="caps">IBM</span> to get their compilers to build it for them. It&#8217;s good business for those companies, but bad news for the Internet as a whole I think.</p>
+
+
+	<p>Ruby says that essentially for a framework to succeed on the web, it has to enable a situation he terms <strong>Zero Training</strong>, a state where it is easy to get going in the language and to adapt examples to your own needs. Good programming languages have it, some web technologies have it, <span class="caps">SOAP</span> and <span class="caps">WSDL</span> don&#8217;t. Indeed, I feel like the growth of <span class="caps">SOAP</span>/WSDL in the enterprise has been in spite of the difficulties of developing for it (mainly because of Microsoft and <span class="caps">IBM</span> pushing it). Because, quite frankly, it&#8217;s a beast for anything but the most basic <span class="caps">RPC</span>-style calls. The reasons:</p>
+
+
+	<ol>
+	<li><span class="caps">SOAP</span> allows you to abstract away the underlying transport protocol. But for 99% of <span class="caps">SOAP</span> communication, this protocol is <span class="caps">HTTP</span>, and the abstraction limits the control you have over <span class="caps">HTTP</span>.</li>
+		<li><span class="caps">SOAP</span> needs to validate the entire message before applications can operate on it. This usually means it has to load it up into a <span class="caps">DOM</span> as well, so calls that return lots of data or might take a while (<em>the fun ones</em>) are frowned upon</li>
+		<li><span class="caps">SOAP</span> also assumes the <span class="caps">COM</span>/CORBA marshalling mechanism, so no streaming data or parsing data until the entire document has been received, parsed into an <span class="caps">XML DOM</span> tree, and then mapped into an in-memory object tree. For large amounts of data, forget it.</li>
+		<li><span class="caps">WSDL</span> has a lot of syntax to map procedure names/arguments onto <span class="caps">HTTP</span>. Contrast this to <span class="caps">REST</span>, which embraces the inherent naming conventions of <span class="caps">HTTP</span> and applies them to a simple procedural call model</li>
+		<li>The assumption of these tools is that you will use their <span class="caps">SOAP</span> wizards instead of rolling your own code. The wizard is meant to be the only way, not an additional way.</li>
+		<li>In fact, the idea that <span class="caps">SOAP </span>= Simple Object Access Protocol has become a profound irony.</li>
+	</ol>
+
+
+	<p>In his presentation, Mr. Ruby points to <span class="caps">PHP</span> as an alternate model. <span class="caps">PHP</span> is not really a pretty programming model and it tends to shy away from enforcing higher-level abstractions in favor of lower-level models. But, it is precisely for this reason that <span class="caps">PHP</span> has succeeded where many other dynamic web application programming models have failed. Indeed, as it says in the page <a href="http://www.oracle.com/technology/pub/articles/php_experts/rasmus_php.html">Do You <span class="caps">PHP</span>?</a></p>
+
+
+	<blockquote>
+		<p>Database abstraction is mostly a myth. There is nothing wrong with direct database calls&#8217; making use of all the tricks and cheats your chosen database has to offer, to tweak as much performance as possible out of it.</p>
+	</blockquote>
+
+
+	<p>And this is the kicker here. Complicated database models tend to abstract away the lower level details of individual databases, even when those details can be the difference between fast and sluggish performance. Remote invocation models like <span class="caps">SOAP</span> abstract away the details of the underlying calling mechanism, even when tweaking <span class="caps">HTTP</span> requests can be the difference between a fast web app and a slow one. The lower-level mechanism might require more work for the developer, it might be ugly as sin, and it might be wrong and inefficient on some levels, but it works, and more importantly, it works <em>quickly</em>. Because ultimately, the customer doesn&#8217;t care what technology is used on the backend, they just want their data fast.</p>
+
+
+	<p>Bringing it back to my own experience, I once had to work on an application where we searched a remote document repository via <span class="caps">SOAP</span> and got metadata back on matching documents in <span class="caps">XML</span>. The service would send back all matching results for a query and in some cases, this would result in returning 150000 documents over 5 minutes of streaming <span class="caps">XML</span> to us. Knowing that the user probably would want to see data as quickly as possible, I decided it would be good to render whatever data I got after I received 10000 documents and tell the user to perhaps narrow their search down. And I tried to do this in <span class="caps">SOAP</span> in Visual Studio, and I failed. I could error out completely, but the mechanism had abstracted away the underlying <span class="caps">XML</span>-over-HTTP communication that I had no hooks to get lower level.</p>
+
+
+	<p>And so, I chucked it out and went back to basics. The upcoming call to the remote service was faked by filling in an <span class="caps">XML</span> string I grabbed from the original <span class="caps">SOAP</span> call via a packet sniffer. On the return, my program screams through the data with stream-based <span class="caps">XML</span> parsing. Once I hit 10000 records, then I can stop reading the input stream, display what I have, and tell the user that they need to narrow their search criteria. All within 30 seconds.</p>
+
+
+	<p>Those people who use <span class="caps">SOAP</span> are probably horrified by this and would rightly point out that I had to do a lot of lower-level work to get some of the same functionality promised by the one-click higher-level <span class="caps">SOAP</span> abstraction. But I think that&#8217;s precisely the problem. I needed something to work, and I didn&#8217;t need as much for it to be pretty. The <span class="caps">SOAP</span> framework locked me into a particular model, and once I needed more than that, it failed to deliver. Abstraction is nice, but abstraction always reduces speed, abstraction always reduces flexbility. In most cases, it is possible to strike a balance where the abstraction helps more than it hurts, but until <span class="caps">SOAP</span> is able to handle the heavy lifting needed for serious web work, it isn&#8217;t worth my time.</p>

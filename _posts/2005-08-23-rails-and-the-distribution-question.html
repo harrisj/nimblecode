@@ -1,0 +1,39 @@
+---
+layout: post
+title: Rails and the Distribution Question
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta: {}
+---
+<p>I like <a href="http://www.rubyonrails.org">Ruby on Rails</a> a lot. It&#8217;s a pretty awesome web development frameworrk and it&#8217;s generated a serious amount of buzz for its young age (just over a year). One major milestone that&#8217;s ahead for the language will be a 1.0 release that among other things promises to deliver more <span class="caps">API</span> stability than there has been with more recent releases (as well as freeing developers and writers from creating code that&#8217;s partially outmoded on arrival). Will that mean though that the big development work for Rails will be done? Hardly. If Rails is really to succeed as a development platform, I believe it can only happen if the distribution problems are solved. And Rails 1.0 seems to be a necessary precursor to that.</p>
+
+
+	<p>I like to think with web application frameworks there are 3 Ds that are important for the platform to succeed:</p>
+
+
+	<ul>
+	<li><strong>Development</strong> &#8211; how easy is it to develop?</li>
+		<li><strong>Deployment</strong> &#8211; how easy is it to place on your own servers and systems?</li>
+		<li><strong>Distribution</strong> &#8211; how easy is it for third-party users to deploy on their servers?</li>
+	</ul>
+
+
+	<p>I think Rails has done very well in the first case. In the second case, I think tools like <a href="http://wiki.rubyonrails.com/rails/show/SwitchTower">Switch Tower</a> will help to make the second problem as nice as the first. But I think the third problem is the most problematic in Rails right now. Essentially, there are no nice and standard ways for developers to package up their Rails-developed programs for other users to easily install (without Rails experience).</p>
+
+
+	<p>Let me give a concrete example here. As you may know, I recently switched this blog from <a href="http://www.wordpress.org/">Wordpress</a> (a <span class="caps">PHP</span>-based service) to <a href="http://typo.leetsoft.com/">Typo</a> (a Rails-based service). I currently am hosting on Textdrive, which is rare among hosting providers in that it supports the latest Rails versions, so at least I did not have to fight with my <span class="caps">ISP</span> to get Rails as an option. But even then, I must admit that Wordpress&#8217; setup was a dream to use, and not knowing a lick of <span class="caps">PHP</span>, I was able to get a blog up, installed, and running in no time. In contrast, I do have some knowledge of Rails, but Typo was definitely harder. For starters, I had to manually create tables in a MySQL database by running a MySQL file to create the tables (good thing I didn&#8217;t use one of the more obscure adapters like <span class="caps">MS SQL</span> that didn&#8217;t have a manually written schema file for them). I had to go an edit the database.yml config file manually in a shell (not confugured via an install script) Importing the data from Wordpress was a bit difficult too, and I had to fix the import script. Finally, I discovered that I have actually been dispatching Rails methods with the FastCGI dispatcher, even though I&#8217;m not using it currently. So, my blog went down over the weekend and I didn&#8217;t know. Not good.</p>
+
+
+	<p>This is not to trash Typo, which is a truly excellent product. Nor is it to condemn Rails, which is still too young to even explore a thorough solution to the distribution problem yet. But I think if we start thinking about the future of Rails, the distribution problem is important, because without easy distribution, Rails will be doomed by the network effect. What do I mean by that?</p>
+
+
+	<p>There are a lot of <span class="caps">PHP</span> developers out there these days, far more than develop for Rails, Django, Seaside or some of the other frameworks out there. Why? Is <span class="caps">PHP</span> a better framework? Arguably no. But is <span class="caps">PHP</span> in a whole lot of publicly deployed web products, like Wordpress? Or more wikis than you can shake a stick at? Yes. This in turn leads to more people thinking of developing in that language, books being written, etc. which accelerates adoption of <span class="caps">PHP</span> even further. The network effect.</p>
+
+
+	<p>I think 37 Signals, Robot Coop and such have done a lot to advance Rails over the last few years. But ultimately, I think it&#8217;ll do more to sell their particular style of visual design than Rails as a development platform. Sure, there are people making custom solutions from scratch that might be wowed by the backend magic that makes it all happen. But I think there&#8217;s a bigger pool of programmers who might find themselves having to setup a quick Wiki for their intranet or such? Given the choice, how many of them will write a system from scratch in Rails? And how many of them will just grab an existing <span class="caps">PHP</span>-based solution? And once they&#8217;ve done the latter, how likely is it they&#8217;ll look at Rails ever again? The best way for Rails to grow is for there to be many Rails apps to choose from. And to get there, Rails needs to make distribution as easy as development.</p>
+
+
+	<p>(<em>I hope to follow up on this in a few days with some further observations and ideas.</em>)</p>

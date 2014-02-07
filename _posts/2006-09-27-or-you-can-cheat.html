@@ -1,0 +1,33 @@
+---
+layout: post
+title: Or You Can Cheat
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  delicious: a:3:{s:5:"count";s:1:"0";s:9:"post_tags";s:0:"";s:4:"time";s:10:"1335184474";}
+---
+<p>Wow, long time no blog. Work and home life have just sucked all the mental energy out of me lately. For those of you who still have kept me in your feedrolls or click here from time to time, I have a new set of slides presented for your personal enjoyment.</p>
+
+
+	<p>Last week&#8212;transfixed by the horror of an empty slate of speakers&#8212;I decided it was time to give another talk to the <span class="caps">NYC</span>.rb and so I spent a few days throwing together a presentation I titled <em>Or You Can Cheat</em>. It&#8217;s all about how you can write C extensions for Ruby and also how this something you shouldn&#8217;t undertake lightly. I have a very <em>interesting</em> approach to presentations: when I want to learn more about a subject, I throw together a presentation on it. I think the combination of casual interest and the abject fear of humiliation in front of my peers is a great personal motivational tool. This talk continues that trend, and while I can not claim to be a definitive expert on C extensions for Ruby, I certainly know a lot more about the subject now and I think you will too.</p>
+
+
+	<p>If you are interested, you can download the talk here</p>
+
+
+	<p><a href="http://www.nimblecode.com/files/rubyextend.pdf">Or You Can Cheat</a>  (600K <span class="caps">PDF</span>)</p>
+
+
+	<p>This is a bit more silly and off-the-cuff than <a href="http://www.nimblecode.com/articles/2006/04/25/rubyisms-in-rails">Rubyisms in Rails</a>, and I really enjoyed it. There are a few references I should clarify though. First, there is the matter of <a href="http://en.wikipedia.org/wiki/Arepa">arepas</a>. The arepa is <strong>the</strong> official food of <a href="http://www.nycruby.org/">NYC.rb</a> and it is a rite of passage here to take visiting Ruby eminences to our official supplier, the <a href="http://www.caracasarepabar.com/">Caracas Arepa Bar</a>. Asides from being addictively tasty, arepas serve as a perfect metaphor for Ruby extensions, in that they wrap the tasty ingredients inside a pragmatic corn flour shell. They really are that tasty. Yes, I also suppose I was a bit harsh calling Joel Spolsky a troll, but I had no other term to <a href="http://www.joelonsoftware.com/items/2006/09/12.html">describe his wild extrapolation</a> that current Ruby interpreter performance augurs that Ruby will always be slow, that Rails is a horrible web development framework, and how you should shackle your entire development environment around the slowest part. But he is right that Ruby currently is slow for <em>some uses</em>, and C exensions are a potent way to resolve those edge cases without throwing in the towel.</p>
+
+
+	<p>And yet, I hope you&#8217;re not dropping everything to write them.</p>
+
+
+	<p>Why the lukewarm recommendation? Well, I think Ruby performance has become an all-purpose scapegoat these days. In some cases, this is deserved (we need <span class="caps">YARV</span>. Now.), but it&#8217;s all too easy to blame Ruby when the real problem is your web server, your database, or some stupid algorithm you wrote that&#8217;s wildly inefficient. Rule all that out first before you dive into C extensions for Ruby. Because C is dangerous, C is tricky, and C is just plain <strong>no fun.</strong> C extensions can be like eating an arepa filled with broken glass if you aren&#8217;t careful. But they also are a useful tool for performance and especially for wrapping existing libraries and legacy code.</p>
+
+
+	<p>Which gets me wondering if there are any cool killer apps for C extensions and Ruby. Are there some cool open-source libraries that would be nice with Ruby bindings? How cool would could a combination of <a href="http://www.rufy.com/starfish/doc/">Starfish</a> and <a href="http://www.zenspider.com/ZSS/Products/RubyInline/">RubyInline</a> really be? Would we need to use C extensions to create rbsh, a Ruby shell? What other fun things could you do if you had nice Ruby tongs to keep that nasty C code at bay? Let me know if you have any awesome ideas and if you enjoyed these slides. And in return, I&#8217;ll try to see if I can actually blog again one of these days. Thanks.</p>

@@ -1,0 +1,25 @@
+---
+layout: post
+title: Folksonomy Needs Taxonomy
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta: {}
+---
+In an <a href="http://www.zeldman.com/daily/0505a.shtml">excellent followup</a> to his <a href="http://www.zeldman.com/daily/0405d.shtml">earlier post on the problem with tag clouds</a>, Jeffrey Zeldman looks at tag clouds a bit more critically and reaches similar conclusions to my own <a href="/blog/?p=18">concerns about tagging and design</a> (<em>If you don't know what a tag cloud is, <a href="http://yahoo.theherrens.com/index.php">here's a good example</a>)</em>:
+
+<blockquote>Tag clouds remove the guidance and artistry from our side of the equation, offloading all the work to our users. Whatâ€™s popular? Whatâ€™s important? Users decide. This might be okay if the process did not create a false intellectual equivalence between high- and low-level topics, and if it did not skew toward popularity at the expense of findability.</blockquote>
+
+<blockquote>As tag clouds come to replace expert taxonomies in common practice, carefully constructed hierarchies vanish. In their place is a flattened world where every idea, at any level, is a topic as worthy as any other. Eight Mile is a topic at the same level as Detroit, which is a topic at the same level as Cities, which is a topic at the same level as United States, and so on.</blockquote>
+
+Which is an excellent point I neglected to touch on. The truth is, <strong>hierarchies are powerful</strong>. For instance, when it comes to geography we have generally accepted and useful geographical hierarchies like so:
+
+<blockquote>Earth &rarr; North America &rarr; United States &rarr; New York State &rarr; New York City &rarr; Brooklyn &rarr; street address OR latitude/longitude</blockquote>
+
+<p>And by thinking of things this way we can easily control the level of detail (and the number of matches for a search) by moving up and down the scale. Which is why <a href="http://maps.google.com/">Google Maps</a> has the useful slider on the left. The problem with tagging is that it has no hierarchy. <b>Even worse is that tagging can sometimes imply a hierarchy that it doesn't support.</b> To see why this might be a problem, imagine I tag a photo "Eight Mile" like in Jeffrey Zeldman's example above. most people would also expect it to show up if you searched for photos of "Detroit", but it won't since I didn't tag it at that hierarchy. So, I've broken search just like that, in that I force the user to adapt to the system rather than handle search requests (imagine having to find photos of New York by doing searches like "(new york) OR (brooklyn) OR (empire state building) OR (statue of liberty) OR...", but that's the only option available if we discard taxonomies. And this quite frankly sucks. It's ambiguous (lots of errors) and even worse, assuming you could get your query perfect, it's so very slow. </p>
+
+<p>Of course, there are areas where taxonomies can be nuisances too. But taxonomies are perfect for navigation, because they mirror the way we structure our knowledge of the world. And while folksonomies are great for filling in additional details, a site that relies on them exclusively is a nightmare to navigate because there is no starting point for me to narrow down from and no way of knowing that any view is comprehensive for all the things I think should be in there. Folksonomy needs taxonomy to create a logical sense of things and how they relate, and taxonomy needs folksonomy to handle new content and additional information that taxonomy is too rigid to use.</p>
+
+<p><em>As an aside, perhaps this realization about the navigational shortcomings of a pure folksonomy scheme is behind the sudden interest in geotagging Flickr photos with latitude/longitude (see <a href="http://geobloggers.com/">Geobloggers</a> for an example of this). Essentially, latitude/longitude is just the lowest level in a geography taxonomy and by using a consistent markup, it's essentially the same as if Flickr provided a positional hierarchy of its own).</em></p>

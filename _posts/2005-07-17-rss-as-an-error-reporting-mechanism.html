@@ -1,0 +1,98 @@
+---
+layout: post
+title: RSS as an Error Reporting Mechanism
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _oembed_ccf629302de6dc5737465973a3d97706: ! '{{unknown}}'
+  _oembed_5529789cf62ff3b24b6c026f58cd56f4: ! '{{unknown}}'
+---
+<p>An <em>interesting</em> idea occurred to me the other day...
+
+</p><p>First, a disclaimer. This is not a specification. Specifications are fixed and obsessively spelled out, and I would rather explore the idea fully first. Besides, specifications are notoriously boring and opaque, and I think that's part of the problem I want to address. So, let's get started.</p>
+
+<h2>The Wonders of RSS</h2>
+
+<p>RSS is a pretty neat thing when you think about it. In the past 3 years we have seen a veritable explosion of sites that create RSS feeds and interesting readers that consume them. It's led to some pretty sophisticated ways of reading the web, and your standard aggregator allows grouping, regular checking, unicode support and searching. In addition, newer apps even allow users to do things like create "virtual feeds" by specifying search queries that can be run across multiple feeds, while services like Bloglines allow you to take your subscriptions anywhere around the globe and will probably soon over ways of transposing RSS items into emails or SMS content or such. I imagine the next big thing will be helping us to better cope with information overload from RSS feeds. Which is fascinating stuff. Especially fascinating is that this is in spite of (<em>or rather because of</em>) RSS is painfully stupid. It's not the first or the "best" mechanism for distributing content across the Internet (I think many would argue that NNTP is far more elegant and scalable), but its basic simplicity and ease of manipulation has made it a winner (although IMHO it took the further simplification of RSS2.0 and Atom vs. RSS1.0 to ensure this.)</p>
+
+<p>So, what was my point in a nutshell? There are several awesome things about RSS that I think should be noted in a bullet list:</p>
+
+<ol>
+<li>Very simple. The RSS2.0 spec is so basic that deserves the name <strong>Really Simple Syndication</strong></li>
+<li>Doesn't care about transport. If HTTP is good enough for everybody else, it's good enough for us. Of course, you could put RSS on top of other things, but the important thing is that we don't need to worry about implementing the transport layer here.</li>
+<li>Extensible. One good thing about RSS is that you can embed additional content in the basic RSS feed. As long as you use a namespace for your elements, any good RSS reader <em>should</em> ignore them, but savvy ones can use them.</li>
+<li>Regular checks. One of the common complaints about RSS is that it's a dumb pull-based mechanism and thus can cause many redundant server accesses from every RSS client checking a feed once an hour. This however is a virtue in my mind. It keeps things simple (<em>no subscription tracking</em>).</li>
+<li>Time management. With RSS you're not so much browsing the web; instead you are <strong>monitoring</strong> it.</li>
+</ol>
+
+<p>Read that last point again. Because this is where I went from Modern Web 101 to a Reese's peanut butter cup moment (<em>I'll explain the product plug in a bit</em>). When you get down to it, there is nothing in RSS2.0 (<em>or RSS1.0 or Atom; I <strong>don't care</strong> which RSS spec you prefer</em>) that says the items in an RSS channel have to be documents somewhere (ie, new stories, new photos, etc.). And in fact, I would argue that the meaning of an RSS item is really as an <strong>event</strong> which just happens to be tied to a particular story in many cases. <em>But it doesn't have to be</em>.</p>
+
+<h2>RSS and Error Reporting</h2>
+
+<p>Okay, the title here gives away where I'm going with this, but I still want to provide a little more background on things. In my office, I'm a backend guy. This means I do a lot of work tying together various systems and making sure data flows around smoothly and efficiently. It works really well actually and I'm quite proud of our simple system (more on that later). But errors are inevitable, and they occur in many different areas. Imagine you have a web server farm with applications. You can think of where errors occur in terms of domains (listed below with some standard error reporting mechanisms)</p>
+
+<ol>
+<li>Hardware - if the underlying machine has problems, the OS will hopefully catch it. If you're using Unix-based systems, you can configure <code>syslog</code>*. Otherwise, on a Windows-machine it might get logged into the System Events and perhaps picked up by a third-party tool like <code>Patrol</code> or such.</li>
+<li>Network - Routers, firewalls, etc. can go down. <code>SNMP</code> seems to be the standard mechanism for reporting problems in the network. </li>
+<li>Availabilty - A machine may be up but unreachable due to high load or other things. <code>NAGIOS</code> is a way of catching this.</li>
+<li>Web Server - the web server may have problems with some requests. This are generally logged to a local HTTP log. Logs from multiple HTTP servers can be sent to another host via <code>syslog</code>, but this is rarely done.</li>
+<li>Web Application errors - in the best cases these might be logged to a local file on the server, but usually they are just displayed on the screen to the user.</li>
+</ol>
+
+<p>There are a few interesting things to note here: </p>
+
+<ol>
+<li>Some of these error reporting solutions also include a networking protocol in addition to an error format, meaning you could assemble a centralized console for error reporting; no such luck in the web server.</li>
+<li>For applications, it's pretty much left to each developer. As a result, errors if they are logged are often local, since not many people think to use <code>syslog</code> for error reporting. </li>
+<li>I think the ideal thing for site maintenance is to have some sort of centralized view of errors in the system as they occur.</li>
+</ol>
+
+<p>Anyhow, to cut an already long story somewhat short, I was working on an application that would automatically generate and process RSS feeds that I wanted to be robust and I wanted to know whenever errors occurred without having to login to the machine (ala <code>syslog</code>). So, I looked into some ways of reporting/logging errors when it struck me: <strong>why not use RSS as an error reporting mechanism</strong>? </p>
+
+<h2>You Got Your RSS in My Syslog, You Got Your Syslog in My RSS!</h2>
+
+<p>And so we get to my Reese's Peanut Butter Cup reference. Think about it, RSS has some real advantages to error reporting:</p>
+
+<ol>
+<li>Very simple. RSS has a lot of support across many platforms and with a wide range of viewers/aggregators. Does syslog or other networked error reporting mechanism. And it has support in programming language libraries too.</li>
+<li>Doesn't care about transport. HTTP is established and allowed through most corporate firewalls. No dumb network debugging or NAT fiddling and such.</li>
+<li>Extensible. One size doesn't fit all. I might want to record basic messages in some cases (ie, "printer on fire") or capture detailed stack traces in another (Rails logging). XML + Namespaces is a great way of layering stuff in there (<em>although you need an RSS reader that will allow you to look at the underlying XML to get the extra data</em>)</li>
+<li>Regular Checks. I like the pull communication of RSS because it acts like a heartbeat to your error reporting services; when something is wrong with one of my sources, I <em>know</em> it because my RSS reader tells me so. (<em>to make an analogy, suppose you had a phone to be called for emergencies; does not getting any calls mean that there are no emergencies or might the line be dead?</em>). Granted, I might not get an error <em>immediately</em>, but to be honest I don't think I've encountered many errors that a 5 minute delay would've made impossible to handle; don't use it your nuclear reactor though I guess.</li>
+<li>Time Management. So, if I wanted to I could have errors, warning, statistics and other things coming into my central console. I don't have an insight into the best way to manage all this information effectively, but I have a pretty good idea that problems of information overload will be tackled much sooner in the RSS world than they have been in the Syslog user base.</li>
+</ol>
+
+<p>So, here's the idea. Define a basic set of RSS error fields in a particular XML namespace (like <em>http://www.nimblecode.com/rsserror</em>). This will have a set of optional tags that could be added to items. If users want to define their own extra tags they could just by declaring a new NS like (like <em>http://www.nimblecode.com/rsserror/syslog</em>) and add them. Really, you can add anything to XML, but the NS tags help consumers of the information to know what to expect (so, if I want to look for syslog-type errors). An example of this might be produced soon.</p>
+
+<h2>The Minimum Error Fields</h2>
+
+<p>So, if we were to make a minimal RSS error specification, what optional and required tags would it include. I have an idea:</p>
+
+<ol>
+<li><code>&lt;error:msg&gt;</code> The text of an error message. Note that this could also be put in the <code>title</code> or <code>description</code> of the regular RSS <code>item</code>, but I think it's good to define an explicit place in a namespace it will always be.</li>
+</ol>
+
+<p>And that's it. Obviously, there are other things we might want to record. For instance in my case, I think of optional tags like <code>timestamp</code>, <code>extended</code>, <code>code</code>, <code>hostIp</code>, <code>application</code>, etc. Not to mention some of the error information available with syslog traces, but I want to weigh what tags should go in a given namespace before I start adding options willy-nilly (indeed, there's no reason why you couldn't define your own extensions.) </p>
+
+<p>So for instance, if we were defining an addition <code>syslog</code> RSS error namespace, we could also add the following <code>syslog</code> fields as tags:</p>
+
+<ol>
+<li><code>timestamp</code> - a timestamp for the error</li>
+<li><code>priority</code> - the priority of the message (EMERG, ERR, WARNING, INFO, etc.)</li>
+<li><code>facility</code> - the facility option for syslog (AUTH, MAIL, USER, etc.)</li>
+</ol>
+
+<p>On the other hand, if I were working on extensions for Ruby on Rail's logging format, I could include the following tags:</p>
+
+<ol>
+<li><code>timestamp</code> - the time the error occurred.     </li>
+<li><code>severity</code> - the severity of the error</li>
+<li><code>sql</code> - the SQL executed against the backend server</li>
+<li><code>backtrace</code> - the call stack where the error occurred</li>
+</ol>
+
+<p>Both of these would still use <code>error:msg</code> for the main message with the error. It looks like I should also make <code>timestamp</code> part of the standard set.</p>
+
+So there you have it. I will probably be working on this a bit more, but it's an interesting idea and I'm curious what other people might think.

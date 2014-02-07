@@ -1,0 +1,30 @@
+---
+layout: post
+title: The Silliness of SOA
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta: {}
+---
+<p>There seems to be a lot of buzz around the concept of Service-Oriented Architecture (SOA), as long as you don&#8217;t ask any of its proponents what it actually means. For an example of the ways in which English can be mangled by technical jargon beyond recognition, check out some of the definitions from <a href="http://searchwebservices.techtarget.com/originalContent/0,289142,sid26_gci1017004,00.html">A Defining Moment for <span class="caps">SOA</span></a> and <a href="http://searchwebservices.techtarget.com/originalContent/0,289142,sid26_gci1044083,00.html">Revisiting the Definitive <span class="caps">SOA </span>Definition</a> to see what I mean. My personal favorite from the bunch is</p>
+
+
+	<blockquote>
+		<p>SOA is a form of technology architecture that adheres to the principles of service orientation. When realized through the Web services technology platform, <span class="caps">SOA</span> establishes the potential to support and promote these principles throughout the business process and automation domains of an enterprise.</p>
+	</blockquote>
+
+
+	<p>which really tells me nothing at all about why this is cool and where you would start if your <span class="caps">CEO</span> suddenly decided you needed it. Cutting through the bombast and hype, it seems like <span class="caps">SOA</span> is basically</p>
+
+
+	<blockquote>
+		<p>Wrapping a backend database or similar resource in a small component for business logic you can talk to with <span class="caps">XML</span>.</p>
+	</blockquote>
+
+
+	<p>This is definitely cool for many reasons (loose coupling, security, building big things from small parts), but I don&#8217;t understand why there&#8217;s so much hype about it now. Not to boast, but we&#8217;ve been doing this at <a href="http://www.alacra.com">Alacra</a> for <strong>8 years</strong> now, and I&#8217;m really gobsmacked that this sort of architecture would be a revelation to anyone, especially since it builds on design patterns good sense and the older Unix and later Internet philosophy that <a href="http://www.smallpieces.com/">Small Pieces Loosely Joined</a> can make great things. And <span class="caps">SOA</span> is pretty much what the earliest <span class="caps">XML</span>-driven web services were.</p>
+
+
+	<p>I can only assume that the latest hype about <span class="caps">SOA</span> is less about what the technology is, but what it is not. Hint: add a P and you can see what businesses find so refreshing about <span class="caps">SOA</span>. SOAP is a heavyweight protocol that can be good for some external APIs, but is a lot more work than a simple quick and dirty internal application often needs. Imagine being able to drop the requirements of <span class="caps">WSDL</span> bindings, <span class="caps">XML</span> typing, even limited data structures to get the most lightweight, low-ceremony solutions you can feel comfortable with using. And since it&#8217;s internal, you don&#8217;t have to worry about the &#8220;shame&#8221; of not being fully <span class="caps">SOAP</span>+WS-whatever compliant for your <span class="caps">API</span>. Looking at it this way, no wonder they&#8217;re excited. I&#8217;d be excited too if I were able to stop documenting and start hacking for change.</p>

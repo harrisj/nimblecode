@@ -1,0 +1,32 @@
+---
+layout: post
+title: Like a Floppy Disk in the Sky
+categories:
+- Humor
+- Open Source
+tags:
+- Twitter
+status: publish
+type: post
+published: true
+meta:
+  delicious: a:3:{s:5:"count";i:0;s:9:"post_tags";s:0:"";s:4:"time";i:1382834686;}
+  reddit: a:2:{s:5:"count";i:0;s:4:"time";i:1382834686;}
+  tagazine-media: a:7:{s:7:"primary";s:0:"";s:6:"images";a:0:{}s:6:"videos";a:0:{}s:11:"image_count";s:1:"0";s:6:"author";s:7:"7710479";s:7:"blog_id";s:7:"7425378";s:9:"mod_stamp";s:19:"2010-04-01
+    15:56:18";}
+---
+Back in the heady days of 2008, one of my nicknames in the newsroom was <em>Mr. Twitter</em>, due to my work on the <a href="http://twitter.com/nytimes">@nytimes</a> twitter account (and other automated pages) and my work (with others here at the NYT) to coax more members of the <em>Times</em> into <a href="http://www.nytimes.com/twitter">signing up for twitter on their own.</a> I have always found Twitter's spartan user experience fascinating: the short message sizes, the basic social networking layer, the unrelenting emphasis on communication instead of social or professional networks; as I explained in <a href="/2009/01/10/another-twitter-talk/">a few talks I delivered here at the Times</a>, Twitter was compelling because on the surface it offered so little functionality to users, it leaves people to do what they do best, and talk away the silences one status update at a time.
+
+So perhaps unsurprisingly, Twitter's brevity has been an impetus for user-created inventions. Now-official conventions like the @reply and hashtags (<em>I perhaps am the only one disappointed they aren't called octothorpetags</em>) originated as user-invented conventions to scaffold in useful functionality despite twitter's limitations. But text markup can only do so much. For much richer communication like photos, videos, music, twitter falls short and can only send users elsewhere to pick up pieces of the conversation.
+
+For users who want to attach photos or other media to their messages, the only option has been to post the content on the third-party website and embed the link in a tweet. Furthermore, given the space constraints of twitter, it is often necessary to use a URL shortening service that acts as a proxy and provides a compact URL that is expanded into the full URL upon a request. The limitations of such services have been noted many times by now; these include <a href="http://urlshorteningservicefortwitter.com/">obfuscation</a>, <a href="http://boingboing.net/2009/04/04/why-url-shorteners-s.html">fragility</a>, <a href="http://mashable.com/2009/08/09/trim-shuts-down/">impermanence</a>, and a <a href="http://latimesblogs.latimes.com/technology/2009/12/international-domains-url-shortener.html">disconcerting association with the nation of Libya</a>.
+
+But the biggest drawback of using third-party websites for hosting photos and videos is that it wrenches the reader out of the firehose of the status update stream and forces them to visit the rest of the web. And it's scary out there. Such transitions can be jarring (<em>Not to mention impossible for users of SMS or the <a href="http://www.twitterpeek.com/">Peek twitter devices</a></em>), and have only been tolerated thus far by the status update services because there has been no alternative. <em>Until now.</em>
+
+Introducing <strong>TweetFTP</strong> (the Tweet File Transfer Protocol), a revolutionary new approach for sharing files within the contents of tweets themselves. It works by encoding a file to be transferred as a series of encoded tweets (plus a few header and footer tweets). No more guessing whether to use <a href="http://twitpic.com/">Twitpic</a> or <a href="http://www.yfrog.com/">YFrog</a>. No more having to wrench yourself out of the stream just to see a picture of someone's sandwich. No more having to post your photos to some randomly named photo-service that'll run out of funding in 3 months. TweetFTP instead stores them in twitter's servers which operates in the cloud somewhere. And everything important is in the Cloud these days, so tweetftp is <strong>like a floppy disk in the sky</strong>! And it fully embraces all of Twitter's conventions: Want to send a file to one person instead of the world? Prefix the tweets with their username; want to tag a public file with keywords, use all the hashtags you want to describe it. Don't work against twitter, but embrace it; send that photo to Grandma in only 35,693 tweets!
+
+However, there are some caveats. Currently, the only language support is <a href="http://github.com/NYTimes/tweetftp">hastily coded Ruby driver</a>, although this standard is Open Source and I expect other drivers will be created shortly. In addition, twitter's API currently places some artificial constraints on transmission speed. Twitter currently allows API clients to only post up to 150 messages per hour. This practically limits this mechanism to a maximum speed of 0.019kbps. But do not despair! Serious users of twitter may apply for an elevated rate limit of 20,000 requests per hour, which increases throughput to a comparatively blazing 2.51kbps. A bigger problem is that this mechanism might be used for illegal file sharing. And indeed, since it only takes a mere 60,000 or so tweets (or about 17 days) to upload an MP3, it would be pretty hard to resist that temptation. I can only appeal to user's moral judgment to ensure tweetftp is only used for the right reasons.
+
+So there you have it. To learn more, please read the <a href="http://github.com/NYTimes/tweetftp">tweetftp specification</a> and let me know if you implement support for it in your own favorite language. I'll send you a badge for for blog. Via tweetftp!
+
+Next post: <em>Will tweetftp save journalism?</em>

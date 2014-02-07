@@ -1,0 +1,49 @@
+---
+layout: post
+title: Waves of Annotation
+categories:
+- Open Source
+tags:
+- Twitter
+status: publish
+type: post
+published: true
+meta:
+  delicious: a:3:{s:5:"count";i:0;s:9:"post_tags";s:0:"";s:4:"time";i:1382834685;}
+  reddit: a:2:{s:5:"count";i:0;s:4:"time";i:1382834685;}
+---
+Two weeks after the announcement (and some big waves by Facebook), there still seems to be serious interest in Twitter annotations. And yet, we have to wonder how much annotations will catch on, especially since it will be built from loosely coordinated actions among a large number of players.
+
+I am admittedly no futurist, but I'll take a stab at prognostication. For starters, I'd avoid waxing rhapsodically about our glorious semantic-web future. I would say it'll be at least six months or more until we see widespread client usage of twitter annotations, and it may be that only a small fraction of tweets will be annotated even in the next few years. Progress may be fitful and sporadic, driven in the early days by some major adopters. Most users will remain unaware of the functionality or opt out.
+
+How can I guess the future? By looking at the past. Twitter has already introduced a level of annotation to tweets: geolocation. And they didn't exactly take off like wildfire. <a href="http://blog.twitter.com/2009/11/think-globally-tweet-locally.html">Five months after its launch</a>, geotagged tweets are still a rarity in the general stream (<a href="http://apiwiki.twitter.com/Streaming-API-Documentation#Sampling">a few hours of the Twitter Sampling API</a> revealed only about 0.85% of tweets collected had locations). Of course, annotations are not exactly the same as geolocation: users may be more interested in sharing what books they're talking about than where they are; but they suggest a general model for adoption that will probably remain true. I'm guessing we'll see the following <a href="http://www.youtube.com/watch#!v=nwiwcW8Y2Ds&amp;feature=fvw">waves of annotation</a>:
+
+<strong>Wave 0: Early Hacking</strong> When Twitter Annotations launch, expect to see an initial burst of one-off hacks where developers put it through the motions and play with possibilities both silly and sublime. Annotations will probably roll out with a developer wiki/emailing list that means that some standards will coalesce pretty quickly, although some may fall out of favor in later stages.
+
+<strong>Wave 1: Automated Tweets</strong> (<em>1-3 months later</em>) The next major wave of annotated tweets will come when various websites that automatically tweet add the metadata they have to their messages. For instance, we'll probably see the following annotations pretty quickly off the bat:
+<ul>
+<li><a href="">MediaRSS</a> or similar extensions for describing photographs on photo-posting services like <a href="http://www.twitpic.com/">TwitPic</a> or <a href="http://yfrog.com/">YFrog</a></li>
+<li>Product information alongside "Tweet This Product" links from retailers like Amazon. This will probably include UPC or ISBN as well as links to a purchasing page.</li>
+<li>Book-specific metadata from sites like <a href="http://www.goodreads.com/">Goodreads</a> or <a href="http://www.readernaut.com/">Readernaut</a> where users rate books they have just read. Many of thess sites will likely use Facebook's <a href="http://www.opensocialgraph.com/">Open Graph Protocol</a>, since they will already want Facebook integration as well.</li> 
+<li>"Like" actions on various websites. Here we'll probably see a tussle between the <a href="http://www.opensocialgraph.com/">Open Social Graph</a> and <a href="http://activitystrea.ms">Activity Streams</a> standards.
+<li>News-specific metadata from news feeds. This might include generalized concepts like <em>urgency</em> or the <em>byline</em> or <a href="http://open.blogs.nytimes.com/2008/10/21/announcing-the-timestags-api/">publisher-specific metadata</a>. Linked Data would be helpful to connect stories across various taxonomies.</li>
+</ul>
+Automated services may very well remain the predominant source of annotated tweets. For instance, remember that figure about geotagged tweets earlier? <a href="http://foursquare.com/">Foursquare checkins</a> accounted for 32% of them, and I imagine it would be higher if I ran my sample at night. More on that below.
+
+<strong>Wave 2: General Standards Emerge</strong> (<em>2-4 months</em>) In the beginning, everybody will probably annotate alone: Amazon will probably use an <em>amazon</em> namespace, the New York Times will use <em>nyt</em>, and every twitter photo-sharing site will probably use the <em>media</em> namespace in widely different ways. In other words, everybody tweets alone, using their own terminology and taxonomies to organize it. So, searches for things like tweets about books or Barack Obama returning only a fraction of annotated tweets. Ultimately, certain conventions will predominate (whether adapted from existing standards or created entirely new), precisely because it's easier to build tools against a few standards than many. 
+
+<strong>Wave 3: Client Support</strong> (<em>6-9 months</em>) Eventually, some API clients will add support for annotation within the client. I doubt clients or the twitter website will just add direct fields for entering annotation triples; that would be a user-experience disaster. Instead, we will probably see the following features rolled out once the automated tweeting services have established some standards:
+<ul>
+<li>Display of extended URL information contained within tweets.</li>
+<li>Displaying thumbnails or other metadata from annotated picture tweets.</li>
+<li>ISBN and UPC lookup against Amazon or other retailers (with purchasing links, naturally)</li>
+<li>Allowing the user to explicitly annotate tweets about books or movies via a pop-up wizard.</li>
+<li>If Facebook adds Open Social Graph annotation for user statuses, then many clients that support posting to both Twitter and Facebook will likely add annotations using the Open Social Graph namespace.</li>
+</ul>
+I would guess though that automated services will always be the predominant producers of annotated tweets, and clients will mostly focus on displaying annotations. Simply because the user experience for third-party services will almost always be more fun than the base information sharing of a twitter client. This is why Foursquare accounts for a hefty chunk of geotagged tweets. Similarly, a user on GoodReads gets cumulative summaries, search, and other features beyond what would be available in most twitter clients. Ultimately though, the reason why there won't be many people manually annotating their tweets is because it runs counter to the reason we joined twitter in the first place: unlike a blog, it's just one simple text entry box, and any additional input (<em>no matter how seamless</em>) will most likely never get used. And so, from here on out, we'll probably see decreasing adoption rates for annotations on twitter.
+
+<strong>Wave 4: Automated Entity Extraction and Aggregation</strong> (<em>9-12 months</em>). So, it's unlikely that many users will manually annotate their tweets in clients (although they may be willing to use third-party sites that will). But what if annotation were mostly automatic? Consider perhaps semantic analysis in the client that watches your typing and presents suggested annotations to be reviewed and deleted below the box the same way Twitter.com suggests your neighborhood. This might increase adoption to some degree, but I remain skeptical. More likely we'll see a larger uptick from the man retweeting bots on twitter when they add semantic analysis and annotations to their bags of tricks. So, the <a href="http://twitter.com/nytwriters">@nytwriters</a> account might retweet and add the annotation <tt>og:organization='The New York Times'</tt> to tweets.
+
+<strong>Final Thoughts</strong> So, what's the ultimate takeaway from this lengthy piece? Mainly, annotations will probably be adopted in distinct waves, with the largest bump in the middle resulting from automated services. And, <a href="http://www.readwriteweb.com/archives/what_twitter_annotations_mean.php">despite some of the hopes to the contrary</a>, annotations will probably be used on a only a very small fraction of tweets, of which the bulk will be from automated services like <a />TwitPic</a>, <a href="http://www.youtube.com/">YouTube</a>, or <a href="http://foursquare.com/">Foursquare</a>. I am not saying annotations will be useless; on the contrary, nothing is more powerful than giving sites with metadata the tools to share them. But like most other forms of media, freeform text (with all of its ambiguities) will always remain predominant in twitter; for instance, if your tools just focus on retrieving tweets annotated <tt>movie:title="Avatar"</tt>, you'll indeed avoid all those tweets about people's twitter avatars, but you'll also miss almost all of the conversation about the movie (<a href="http://en.wikipedia.org/wiki/Precision_and_recall">the precision/recall curve strikes again</a>).
+
+But, I could be wrong. Thoughts?

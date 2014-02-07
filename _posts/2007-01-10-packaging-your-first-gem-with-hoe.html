@@ -1,0 +1,35 @@
+---
+layout: post
+title: Packaging Your First Gem With Hoe
+categories:
+- Presentations
+tags:
+- hoe
+- ruby
+status: publish
+type: post
+published: true
+meta:
+  reddit: a:2:{s:5:"count";i:0;s:4:"time";i:1356378636;}
+  delicious: a:3:{s:5:"count";i:0;s:9:"post_tags";s:0:"";s:4:"time";i:1368001020;}
+---
+<p>My name is Jacob Harris, and I am a rubygem addict. I&#8217;d estimate I have hundreds of them tooling around on my hard drive, useful little snippets of Ruby or C library wrappers or random noodlings. I might not actually use most of them in any of my projects, but like a vast library of unread books, I enjoy having them around. But for the longest time, I&#8217;ve been a freeloader. I&#8217;ve downloaded gems, but I&#8217;ve never written one, but it&#8217;s time I start giving something back.</p>
+
+
+	<p>And so, I&#8217;ve written my first gem. It&#8217;s nothing incredible &#8211; all things have to start simple &#8211; but I like it. It&#8217;s called <a href="http://amazon-hacks.rubyforge.com/">Amazon Hacks</a> and it consists of two classes (for now) to benefit people whose sites handle Amazon links. The Amazon::Hacks::Link class contains a few methods to extract an <span class="caps">ASIN</span> from any product link, normalize product links, and append an affiliate ID easily. The slightly sillier Amazon::Hacks::Image class puts a convenient Ruby wrapper around the <a href="http://aaugh.com/imageabuse.html">convoluted syntax Amazon uses for its image transformation engine</a>. If you work on a site that links to Amazon product pages (e.g.,  <a href="http://www.allconsuming.net/">All Consuming</a>), try it out and let me know if it works for you or it can be improved. It&#8217;s simple to get started, simply run</p>
+
+
+	<blockquote>
+		<p><strong>gem install amazon-hacks&#8212;include-dependencies</strong></p>
+	</blockquote>
+
+
+	<p>Which brings me to <strong>hoe</strong>. Last night, I gave a talk on hoe to the <a href="http://www.nycruby.org/">NYC.rb group</a> and the slides are here if you want to learn more about the process. </p>
+
+
+	<ul>
+	<li><a href="http://www.nimblecode.com/files/hoetalk.pdf">Building Your First Gem With Hoe</a></li>
+	</ul>
+
+
+	<p>Before last week, I had no idea of what it takes to create a gem, but it seemed like a lot, and I had better things to distract myself with. And it does indeed require a fair amount of busy work, what I call <em>administrivia</em>, to turn your snippet of Ruby code into a packaged gem, and this work has to be started anew for each gem you want to create. Now, as pragmatic programmers, we learn to automate menial tasks whenever possible, and hoe makes the creation of gems a lot more manageable by automating the busy-work away via a set of useful rake tests. The result is more time for coding, faster releases, and more likely you&#8217;ll release that gem in the first place. So, give hoe a shot, learn about gems, and start writing gems. You&#8217;re a brilliant Ruby coder, it&#8217;s time to share it with the world. And when you write that gem, I&#8217;ve got a cherished spot on my hard drive for it.</p>

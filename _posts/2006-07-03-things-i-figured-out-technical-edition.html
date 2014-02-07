@@ -1,0 +1,73 @@
+---
+layout: post
+title: Things I Figured Out
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  delicious: a:3:{s:5:"count";s:1:"0";s:9:"post_tags";s:0:"";s:4:"time";s:10:"1335211899";}
+---
+<p>And now for something different (and <em>shorter</em>, for those recovering from the length of the last post). Insanely talented Internet prankster <a href="http://www.cockeyed.com/">Rob Cockburn</a> recently posted a short and sweet article <a href="http://www.cockeyed.com/lessons/figured/figured.shtml">Things I Figured Out</a>, where he listed a bunch of interesting and slightly stupid revelations he&#8217;s had over the years. This has been followed by 15 pages of <a href="http://www.cockeyed.com/lessons/figured/figured01.shtml">reader comments</a> chronicling their own  brilliant insights and forehead-slapping moments.</p>
+
+
+	<p>I think this is a brilliant idea for an article, and I&#8217;ve certainly had my moments of utter brilliance and sheer stupidity (even this blog probably has examples of both). So, I&#8217;m going to post a few of the things I&#8217;ve figured out on my own or, failing that, learned the hard way. But since this is a technical blog only, there will be no personal idiocy. Just technical things I now know better about now</p>
+
+
+	<ul>
+	<li><strong>XML is Not For Everything</strong> Great for long data files, lousy for configuration files, downright terrible for love notes. It&#8217;s not one-size-fits-all.</li>
+	</ul>
+
+
+	<ul>
+	<li><strong>XML Is a Minute to Learn, a Lifetime to Master</strong> It&#8217;s easy to gloss over some of <span class="caps">XML</span>&#8217;s subtleties when you begin, but they&#8217;ll get you later if you aren&#8217;t careful. Sadly, very few resources articulate some of the things that&#8217;ll get you, but maybe there&#8217;s a future blog post about that.</li>
+	</ul>
+
+
+	<ul>
+	<li><strong>Somebody&#8217;s Done It Better Already</strong> I&#8217;m being glib here, but one of the joys of Open Source is that if you need a generic component, it&#8217;s best to look for someone who&#8217;s created it already. For instance, if you need a logger, you could write one on your own, but there are excellent libraries out there and your time is better spent writing stuff you can sell.</li>
+	</ul>
+
+
+	<ul>
+	<li><strong>HTTP Blows Away Raw Sockets</strong> Unless you absolutely, positively have no choice, there is no reason you should use raw sockets instead of <span class="caps">HTTP</span> protocol for remote services. Sure, it might be harder to set up in the short run, but it&#8217;s so much easier to debug and maintain in the long run this is a no-brainer. Especially since small, light, and fast <span class="caps">HTTP</span> parsing libraries are available for all.</li>
+	</ul>
+
+
+	<ul>
+	<li><strong>Often Too Much Is Worse Than Too Little</strong> Or as Donald Knuth put it, &#8220;Premature optimization is the root of all evil.&#8221; I&#8217;ve been stung so many times by trying to be clever, I&#8217;ve finally realized I should see if it&#8217;s slow before I try to fix what ain&#8217;t broke.</li>
+	</ul>
+
+
+	<ul>
+	<li><strong>Stored Procedures Are Evil</strong> DBAs swear by them because they&#8217;re supposed to control access and speed up performance. In reality, they move application logic out of your program into an awkward language (SQL) that will usually fall out of sync with your application and aren&#8217;t kept consistently in sourcesafe or migrations. Worse still, they&#8217;re the trenches for warfare between developers and operations.</li>
+	</ul>
+
+
+	<ul>
+	<li><strong>Developers Black-Box Way Too Much</strong> It&#8217;s too easy to leave this with a clichÃ© admonition to &#8220;think outside the box,&#8221; but it&#8217;s sadly true. As developers, we&#8217;re taught early the useful technique of abstracting away complexity within black boxes. This is useful for that third-party <span class="caps">API</span> or calling operating systems, but it&#8217;s very easy to fall into that trap in your job (&#8220;we&#8217;ve <em>always</em> done it this way&#8221;) or your life (&#8220;I&#8217;ll just wait for career advancement to come to me&#8221;).</li>
+	</ul>
+
+
+	<ul>
+	<li><strong>Physical Contact Matters</strong> The Internet still hasn&#8217;t annihilated geography yet. And personal, physical presence still matters. Meeting people is so much better than emailing them. Which I guess is just a roundabout way of saying, yet again, I should&#8217;ve gone to <a href="http://www.railsconf.org/">Railsconf</a>. Sorry!</li>
+	</ul>
+
+
+	<ul>
+	<li><strong>You&#8217;re Going to Screw Up The First Time. Just Accept It.</strong> It&#8217;s so easy to fall into the fear of not getting it right the first time, you never get started. Get over it. Accept you&#8217;re going to make mistakes the first time around and you&#8217;ll fix it later and do the best you can. And if you can, write unit tests to make it easier to clean it up when you start.</li>
+	</ul>
+
+
+	<ul>
+	<li><strong>Things Break Slowly, Rarely All at Once</strong> It&#8217;s rare you can pinpoint a single decision or piece of code where everything catastrophically failed. Instead, the road to failure and mediocrity is a gradual and painful process, of many small failures along the way. It&#8217;s hard to resist the downwards momentum, because it always seems feasible to reverse. I would like to see more project management texts that tell you how to stop digging that hole.</li>
+	</ul>
+
+
+	<ul>
+	<li><strong>If You Can&#8217;t Explain It, You Shouldn&#8217;t Do It.</strong> Sometimes I think half of IT operates by overwhelming your natural instincts and confusion with so much jargon, your brain just gives up. It&#8217;s a mysticism of sorts, but the wakeup to reality again is painful. My rule of thumb is if I can&#8217;t explain it in plain English using metaphors, and optionally table utensils, then it&#8217;s not worth doing. Because it most certainly will not be maintainable.</li>
+	</ul>
+
+
+	<p>Okay, that&#8217;s all I have so far. But I&#8217;m sure the realizations will keep coming. Happy 4th of July everybody!</p>

@@ -1,0 +1,53 @@
+---
+layout: post
+title: Rubyisms In Rails
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta: {}
+---
+<p>In an apparently blatant attempt to be more like <a href="http://www.slash7.com/">Amy Hoy</a>, I&#8217;ve decided it&#8217;s time I did some Intro to Rails writing. Tonight I&#8217;m going to be giving a little talk on what I&#8217;m calling <strong>Rubyisms</strong> as seen in Ruby on Rails. I think one of the things that makes Rails so cool is how it is built upon some of the best aspects of Ruby&#8217;s style: duck typing, symbols, blocks, and metaprogramming. And yet, I think many newcomers to Rails don&#8217;t really notice some of the magic going on behind such simple declarations as</p>
+
+
+<div class="typocode"><pre><code class="typocode_ruby "><span class="punct">&lt;%</span> <span class="number">30</span><span class="punct">.</span><span class="ident">minutes</span><span class="punct">.</span><span class="ident">from_now</span> <span class="punct">%&gt;</span><span class="string"></span></code></pre></div>
+
+	<p>or more complicated Rails cases like</p>
+
+
+<div class="typocode"><pre><code class="typocode_ruby "><span class="keyword">class </span><span class="class">Review</span> <span class="punct">&lt;</span> <span class="constant">ActiveRecord</span><span class="punct">::</span><span class="constant">Base</span>
+  <span class="ident">belongs_to</span> <span class="symbol">:article</span>
+  <span class="ident">validates_presence_of</span> <span class="symbol">:author</span>
+<span class="keyword">end</span></code></pre></div>
+
+	<p>My humble little slideshow goes out to those Rails newcomers hacking code to look like <span class="caps">PHP</span> or Java. The conceit is to use some sample Rails code as starting points for deeper explorations into some of the Ruby coolness lurking inside Rails. This is a nice little look under the hood, but I hope it will educate people new to Rails on how to embrace Ruby style for cleaner and <em>cooler</em> code.</p>
+
+
+	<p>I&#8217;m posting the slides early for some last minute feedback and I might update these files if any other errors are found. I&#8217;d like to thank <a href="http://www.nycruby.org/">NYC.rb</a> compatriots <a href="http://www.zonageek.com/">Sebastian Delmont</a>, <a href="http://locomotive.raaum.org/home/show/HomePage">Ryan Raaum</a>, <a href="http://www.lifecoding.com/">Trotter Cashion</a>, and <a href="http://www.rubypowerandlight.com/">David Black</a> for their help and corrections as well.</p>
+
+
+	<p>The presentation itself is two parts. I&#8217;m releasing it here in two style. The <em>light version</em> is stripped of interstitial chapter screens and is a lot easier on the bandwidth:</p>
+
+
+	<ul>
+	<li><a href="/files/rubynewbies-lite.pdf">PDF Version</a></li>
+		<li><a href="/files/rubynewbies-lite.swf">Flash Version</a> (<strong>Note</strong>: Flash version is cutting off bottoms of some slides)</li>
+	</ul>
+
+
+	<p>If you like what you see there and want to get the version I&#8217;m presenting with images, the full 2MB <span class="caps">PDF</span> dump is also available:</p>
+
+
+	<ul>
+	<li><a href="/files/rubynewbies.pdf">Huge <span class="caps">PDF </span>Version</a></li>
+	</ul>
+
+
+	<p>Anyhow, I hope you enjoy my little presentation, and as always feedback and corrections are welcome in the comments.</p>
+
+
+	<h3>Update (8/2/06)</h3>
+
+
+	<p>This presentation is now available for sale as a <a href="http://www.informit.com/shortcuts">digital shortcut from Informit</a> (54 pages, $9.99). Please see my <a href="http://www.nimblecode.com/articles/2006/08/02/rubyisms-in-rails-redux">Rubyisms Redux</a> for a small pitch and purchasing links. Thank you!</p>

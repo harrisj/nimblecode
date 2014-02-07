@@ -1,0 +1,50 @@
+---
+layout: post
+title: RSS Comes to the Enterprise
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta: {}
+---
+<p>As you may have guessed from this site, I am hardly a person you would expect to praise Microsoft for their technical insight and forward thinking. Like the story about generals, they always seem to be fighting the last war, with their late arrival to the Internet and Web being a current and recurring example (now, rather than Netscape, it&#8217;s Google that is seen as their greatest threat). However, occasionally they get a thing right along the way, and I feel honor-bound to note it in this case.</p>
+
+
+	<p>Over at <a href="http://www.theregister.co.uk/">The Register</a>, there is an article <a href="http://www.theregister.co.uk/2005/09/22/rss_business_apps/">RSS Goes To Work In Windows</a> detailing the ways in which Microsoft has jumped onto the <span class="caps">RSS</span> bandwagon with Windows Vista (shipping next year, maybe?). For those of you following along at home, Microsoft is planning to ship a built in <span class="caps">RSS</span>-store capability in Windows which will allow any application compiled against the appropriate <span class="caps">API</span> to be an <span class="caps">RSS</span> aggregator and manipulate feeds programmatically. This is a nice touch, but hardly a stretch yet.</p>
+
+
+	<p>What is interesting to me is that Microsoft discusses their plans to have the next release of their Dynamics <acronym title="Customer Relationship Management">CRM</acronym> software to create <span class="caps">RSS</span> feeds that can be syndicated to. Other server applications with <span class="caps">RSS</span> extensions in the works are Sharepoint Portal, Exchange, and possible Office. As the article quotes it</p>
+
+
+	<blockquote>
+		<p>&#8220;CRM is one of the first examples of how we see <span class="caps">RSS</span> unlocking data in the back end data systems,&#8221; Amar Gandhi, Microsoft Internet Explorer group program manager, told The Register during a recent interview. Microsoft revealed plans to <span class="caps">RSS</span>-enable its <span class="caps">CRM</span> last week at the Professional Developers&#8217; Conference (PDC)</p>
+	</blockquote>
+
+
+	<blockquote>
+		<p>Chris Caposella, vice president for Microsoft&#8217;s information worker product management group, told software developers attending <span class="caps">PDC </span>Microsoft believes <span class="caps">RSS</span> would be transformed into a platform that embraces business applications.</p>
+	</blockquote>
+
+
+	<p>That last paragraph was something I&#8217;d never see. Because honestly, I never thought people would &#8220;accept&#8221; <span class="caps">RSS</span> in the Enterprise. While we can joke about how <a href="http://37signals.com/svn/archives2/define_enterprise_in_10_words_or_less.php">meaningless the term Enterprise Software is</a>, <span class="caps">RSS</span> is definitely not it by any usual sense of the term for several reasons:</p>
+
+
+	<ol>
+	<li><span class="caps">RSS</span> in general has no typing or generalized schema. It&#8217;s really a schema for news stories that can be generalized for events, but it&#8217;s not for serialization of complex typed objects like <span class="caps">SOAP</span>.</li>
+		<li>The <span class="caps">RSS</span> model is extremely simple. Pull requests over <span class="caps">HTTP</span>. No pushing, no notification mechanism for new content.</li>
+		<li>In itself, <span class="caps">RSS</span> has no security for content (I know, Atom has support for encrypted content), and access security is generally only done through obscurity (giving an individual user a feed with a long unique token in it, maybe unguessable, but not unsniffable)</li>
+		<li>Finally, <span class="caps">RSS</span> is not really controlled. There are no authorization lists, no ACLs or <span class="caps">DRM</span> or other such mechanisms to control who can subscribe and where they can do it.</li>
+	</ol>
+
+
+	<p>That said, I think all of these aspects are why <span class="caps">RSS</span> has succeeded so widely in the world of the Web2.0, <a href="/articles/2005/04/16/radical-simplification">while <span class="caps">SOAP</span> has largely failed to gain traction</a>. In fact, considering that one of <span class="caps">SOAP</span>&#8217;s biggest backers is Microsoft, this <span class="caps">RSS</span> announcement reveals what a disappointment <span class="caps">SOAP</span> has been as a web service platform. So, why is a company like Microsoft so willing to reject one of its software initiatives and embrace <span class="caps">RSS</span> so, in effect giving <span class="caps">RSS</span> an mantle of legitimacy in the Enterprise it might&#8217;ve taken years to achieve?</p>
+
+
+	<p>I think that if we want to consider the <a href="/articles/2005/09/20/web2-0-gets-pragmatic">biggest Web2.0 trend for the coming year</a>, it won&#8217;t be the proliferation of <span class="caps">AJAX</span> or increasing maturity of Web Frameworks. It&#8217;ll be the proliferation of <span class="caps">RSS</span> into every aspect of server-side content. One of the greatest things about <a href="http://www.flickr.com">Flickr</a> and <a href="http://del.icio.us/">Del.icio.us</a> is that you can subscribe to an <span class="caps">RSS</span> feed for every possible page. And since pages are dynamic content (combinations of photos, groups, tags, users), what you are really subscribing to is not a list of documents, but <strong>the latest matches for a search</strong> (ie, &#8220;find me all photos tagged Italy by this user&#8221;). And it&#8217;s easy to do, regardless of the site.</p>
+
+
+	<p>One of the cool features of Mac <span class="caps">OSX </span>Tiger&#8217;s Spotlight (and probably Windows Vista) is the ability to save searches as virtual folders which can be opened and browsed like regular folders in the Finder. This is a really cool way to manage ever-growing content. Now, imagine being able to do similar functionality with server-side content, and suddenly the appeal of <span class="caps">RSS</span> makes a lot of sense (admittedly since <span class="caps">RSS</span> usually shows only the last 20 items or so, there is a <em>you snooze, you lose</em> problem, the general metaphor holds). Most of the Web2.0 is about taking the applications of the desktop into the browser, this brings the web back into the machine and applications.</p>
+
+
+	<p>No wonder Microsoft suddenly has the <a href="http://blogs.msdn.com/rssteam/">RSS Religion</a>. Done well, this might be their best chance to keep people hooked into Windows <strong>and</strong> all their software products for business. Of course, they are trying to do the old <a href="http://dannyayers.com/archives/2005/06/24/ms-rss/">embrace, extend, extinguish trick</a>, but this time it may not fly because Microsoft&#8217;s not in the driver&#8217;s seat for the technology. That said, I must admit that Microsoft has made a smart and proactive move for the future here, and I think it&#8217;ll benefit them well. But more importantly, it lends a large amount of authority to <span class="caps">RSS</span> in the Enterprise, which makes <span class="caps">RSS</span> and the Open Source Standards-Based community the biggest winner of all. At Alacra, we&#8217;ve felt that <a href="http://www.alacrablog.com/alacrablog/2005/07/rss_is_new_medi.html">RSS will be much bigger in the Enterprise</a> for a while. It&#8217;s neat to see we&#8217;re not alone.</p>
